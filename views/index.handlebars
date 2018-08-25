@@ -1,0 +1,15 @@
+<button id="get-news-button">
+
+    Find News</button>
+<div class="news-articles">
+    {{#each news}}
+    <div class="card bg-info" style="width: auto;">
+        <div class="card-body">
+            <h3 class="card-title">{{this.title}}:</h3>
+            <p class="card-text"> "{{this.description}}"</p>
+                <a href="{{this.url}}" class="btn btn-primary">Go to Article</a>
+        </div>
+    </div>
+    {{/each}}
+
+</div>

@@ -4,6 +4,22 @@ var cheerio = require("cheerio");
 var request = require("request");
 
 module.exports = function (app) {
+    app.get("/comments/:id", function (req, res) {
+        db.comment.find({ article: req.params.id }, function (err, data) {
+            var hbsObject = {
+                comments: data
+            };
+            res.render("comment", hbsObject);
+        })
+    })
+
+    app.post("/addComment", function (req, res) {
+        var commentObj = req.body;
+        db.comment.create({ title: commentObj.comment_text, description: commentObj.article }).then(function (result) {
+            console.log("Comment has been added.");
+        })
+    })
+
     app.get("/scrape", function (req, res) {
         var domain = "https://www.ksl.com"
 

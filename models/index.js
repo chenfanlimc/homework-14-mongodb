@@ -1,6 +1,7 @@
 // Exporting an object containing all of our models
 
 module.exports = {
-    ksl: require("./ksl")
+    ksl: require("./ksl"),
+    comment: require("./comment")
   };
   

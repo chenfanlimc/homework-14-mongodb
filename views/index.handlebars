@@ -9,11 +9,12 @@
             <p class="card-text"> "{{this.description}}"</p>
             <a href="{{this.url}}" class="btn btn-primary">Go to Article</a>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-secondary view-comments" data-toggle="modal" data-target="#commentModal" data-id="{{this.id}}">
+
+            <button type="button" class="btn btn-secondary view-comments" data-toggle="modal" data-target="#commentModal_{{this.id}}" data-id="{{this.id}}">
                 View/Add Comments
             </button>
 
-            <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal fade" id="commentModal_{{this.id}}" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -31,10 +32,10 @@
                         <form>
                             <hr>
                             <div class="input-group">
-                                <textarea class="form-control comment-content" aria-label="With textarea"></textarea>
+                                <textarea class="form-control comment-content_{{this.id}}" aria-label="With textarea"></textarea>
                             </div>
                             <hr>
-                            <button type="button" class="btn btn-primary submit-comment">Add Comment</button>
+                            <button type="button" class="btn btn-primary submit-comment" data-id="{{this.id}}">Add Comment</button>
                         </form>
                     </div>
                 </div>

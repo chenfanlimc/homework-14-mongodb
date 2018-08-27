@@ -5,17 +5,19 @@ var request = require("request");
 
 module.exports = function (app) {
     app.get("/comments/:id", function (req, res) {
+        console.log("getting comment's id"+req.params.id)
         db.comment.find({ article: req.params.id }, function (err, data) {
             var hbsObject = {
                 comments: data
             };
-            res.render("comment", hbsObject);
+            res.render("index", hbsObject);
         })
     })
 
-    app.post("/addComment", function (req, res) {
+    app.post("/api/addComment", function (req, res) {
         var commentObj = req.body;
-        db.comment.create({ title: commentObj.comment_text, description: commentObj.article }).then(function (result) {
+        console.log(req.body);
+        db.comment.create({ comment_text: commentObj.comment_text, article: commentObj.article }).then(function (result) {
             console.log("Comment has been added.");
         })
     })

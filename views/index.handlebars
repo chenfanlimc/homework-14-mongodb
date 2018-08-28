@@ -24,8 +24,8 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            {{#each comments}}
-                                <p>{{comment_text}}</p>
+                            {{#each comment}}
+                                <p>{{this.comment_text}}</p>
                                 <br>
                             {{/each}}
                         </div>

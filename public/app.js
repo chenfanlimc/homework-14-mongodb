@@ -22,9 +22,9 @@ getNewsBtn.on("click", function (event) {
 commentsBtn.on("click", function (event) {
     event.preventDefault();
     var thisId = $(this).attr("data-id");
-    console.log("do things")
+    console.log(thisId)
     $.get("/comments/" + thisId, function (data) {
-        console.log("Viewing Comments, Data output is: " + data);
+        // console.log("Viewing Comments, Data output is: " + data);
     })
 })
 
@@ -34,16 +34,15 @@ submitComment.on("click", function (event) {
     var text = $('textarea.comment-content_' + foreign_id).val().trim();
 
     var commentObj = {
-        comment_text: text,
-        article: foreign_id,
+        comment_text: text
     };
 
-    console.log(commentObj);
-    $.post("/api/addComment", commentObj)
+    $.post("/api/addComment/" + foreign_id, commentObj)
         .then(function (data) {
-            console.log(data);
+            // console.log("$.post .then data"+data);
+            location.reload();
         });
 
-        $('textarea.comment-content').val('');
+        $('textarea.comment-content_' + foreign_id).val('');
 
 })

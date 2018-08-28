@@ -5,11 +5,12 @@ var db = require("../models");
 module.exports = function (app) {
 
     app.get("/", function (req, res) {
-        db.ksl.find({}, function (err, data) {
+        db.ksl.find({}).populate("comment").exec(function (err, data) {
             // res.json(data);
             var hbsObject = {
                 news: data
             };
+            console.log("What am I?: " + data)
             res.render("index", hbsObject);
         })
     });
